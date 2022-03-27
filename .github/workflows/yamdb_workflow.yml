@@ -84,8 +84,8 @@ jobs:
           sudo docker-compose stop
           sudo docker-compose rm web
           sudo docker-compose up -d
-          sudo docker-compose exec -T web python manage.py migrate -y
-          sudo docker-compose exec -T web python manage.py collectstatic --no-input -y
+          sudo docker-compose exec -T web python manage.py migrate
+          sudo docker-compose exec -T web python manage.py collectstatic --no-input
   # JOB 4
   send_message:
     name: Send message from telegram bot
