@@ -77,9 +77,14 @@ jobs:
         script: |
           rm docker-compose.yaml
           rm -r nginx
-          wget https://github.com/Muxa2793/yamdb_final/blob/master/infra/docker-compose.yaml
+          wget https://github.com/Muxa2793/yamdb_final/blob/master/infra/docker-compose.yaml?raw=true
           mkdir nginx && cd nginx
-          wget https://github.com/Muxa2793/yamdb_final/blob/master/infra/nginx/default.conf && cd ..
+          wget https://github.com/Muxa2793/yamdb_final/blob/master/infra/nginx/default.conf?raw=true && cd ..
+          sudo docker-compose stop
+          sudo docker-compose rm web
+          sudo docker-compose up -d
+          sudo docker-compose exec web python manage.py migrate
+          sudo docker-compose exec web python manage.py collectstatic --no-input
   # JOB 4
   send_message:
     name: Send message from telegram bot
