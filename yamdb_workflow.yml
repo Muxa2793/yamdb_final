@@ -16,8 +16,6 @@ jobs:
   tests:
     name: pep8 check and tests
     runs-on: ubuntu-latest
-    env: 
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
     steps:
       - uses: actions/checkout@v3
       # STEP 1
@@ -34,6 +32,8 @@ jobs:
           pip install -r requirements.txt
       # STEP 3
       - name: Test with flake8 and pytesting
+        env: 
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
           python -m flake8 
           pytest
