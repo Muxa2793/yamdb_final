@@ -2,12 +2,14 @@ name: yamdb-drf workflow
 
 on: [push]
 
+env:
+  
+
 jobs: 
   # JOB 1
   tests:
     name: pep8 check and tests
     runs-on: ubuntu-latest
-    enviroment: yamdb_env
     steps:
       - uses: actions/checkout@v3
       # STEP 1
@@ -23,7 +25,11 @@ jobs:
           pip install -r requirements.txt
       # STEP 3
       - name: Test with flake8 and pytesting
+        script: |
+          touch .env
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
         run: |
+          echo SECRET_KEY
           python -m flake8 
           pytest
         
@@ -67,6 +73,14 @@ jobs:
         script: |
           sudo docker-compose stop
           sudo docker-compose rm web
+          touch .env
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+          echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
+          echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+          echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+          echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+          echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+          echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           sudo docker-compose up -d
           sudo docker-compose exec web python manage.py migrate
           sudo docker-compose exec web python manage.py collectstatic --no-input
