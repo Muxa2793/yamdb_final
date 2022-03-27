@@ -1,8 +1,8 @@
 ![yamdb_workflow](https://github.com/Muxa2793/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
-# infra_sp2
+# YAMDB
 
-## backend_docker_homework
+## backend_CI/CD_homework
 
 ### API_YAMDB
 
