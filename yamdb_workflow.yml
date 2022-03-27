@@ -2,6 +2,7 @@ name: yamdb-drf workflow
 
 on: [push]
 
+enviroment: yamdb_env
 env:
   SECRET_KEY: ${{ secrets.SECRET_KEY }}
   DB_ENGINE: ${{ secrets.DB_ENGINE }}
