@@ -2,6 +2,15 @@ name: yamdb-drf workflow
 
 on: [push]
 
+env:
+  SECRET_KEY: ${{ secrets.SECRET_KEY }}
+  DB_ENGINE: ${{ secrets.DB_ENGINE }}
+  DB_NAME: ${{ secrets.DB_NAME }}
+  POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  DB_HOST: ${{ secrets.DB_HOST }}
+  DB_PORT: ${{ secrets.DB_PORT }}
+
 jobs: 
   # JOB 1
   tests:
@@ -20,7 +29,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip 
           pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
-          cd api_yamdb
           pip install -r requirements.txt
       # STEP 3
       - name: Test with flake8 and pytesting
@@ -69,6 +77,7 @@ jobs:
           sudo docker-compose rm web
           cd infra
           touch .env
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
           echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
