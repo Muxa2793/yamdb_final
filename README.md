@@ -1,4 +1,4 @@
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![yamdb_workflow](https://github.com/Muxa2793/yamdb_final/actions/workflows/<WORKFLOW_FILE>/badge.svg)
 
 # infra_sp2
 
