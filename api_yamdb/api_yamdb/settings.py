@@ -1,13 +1,12 @@
 import os
 from datetime import date, timedelta
 
+from dotenv import load_dotenv
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # dotenv_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) + '/infra/.env'
-# load_dotenv(dotenv_path)
-
-print(os.environ['SECRET_KEY'])
-print(os.environ['DB_ENGINE'])
+load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
