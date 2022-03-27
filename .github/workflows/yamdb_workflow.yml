@@ -65,7 +65,6 @@ jobs:
   deploy:
     name: Deploy on YANDEX CLOUD
     runs-on: ubuntu-latest
-    environment: yamdb_env
     needs: build_and_push_to_docker_hub
     steps:
     # STEP 1
