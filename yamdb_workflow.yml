@@ -24,12 +24,11 @@ jobs:
           pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
           pip install -r requirements.txt
       # STEP 3
-      - name: Test with flake8 and pytesting
+      - name: Test with flake8 and pytesting  
         run: |
           touch .env
           echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
           echo SECRET_KEY
-          python -m flake8 
           pytest
         
   # JOB 2
