@@ -1,7 +1,7 @@
 import os
 from datetime import date, timedelta
 
-from dotenv import find_dotenv, load_dotenv
+from dotenv import load_dotenv
 
 load_dotenv()
 
