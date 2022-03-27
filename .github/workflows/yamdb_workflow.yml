@@ -71,11 +71,19 @@ jobs:
     # STEP 1
     - name: executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DB_ENGINE: ${{ secrets.DB_ENGINE }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_PORT: ${{ secrets.DB_PORT }}
       with:
         host: ${{ secrets.YANDEX_CLOUD_HOST }}
         username: ${{ secrets.YANDEX_CLOUD_USER }}
         key: ${{ secrets.SSH_KEY }}
-        envs: SECRET_KEY, DB_ENGINE, DB_NAME, POSTGRES_USER, POSTGRES_PASSWORD, DB_HOST, DB_PORT
+        envs: SECRET_KEY,DB_ENGINE,DB_NAME,POSTGRES_USER,POSTGRES_PASSWORD,DB_HOST,DB_PORT
         script: |
           sudo rm docker-compose.yaml
           sudo rm -r nginx
