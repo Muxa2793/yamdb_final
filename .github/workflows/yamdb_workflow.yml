@@ -79,10 +79,10 @@ jobs:
         DB_PORT: ${{ secrets.DB_PORT }}
       uses: appleboy/ssh-action@master
       with:
+        envs: SECRET_KEY,DB_ENGINE,DB_NAME,POSTGRES_USER,POSTGRES_PASSWORD,DB_HOST,DB_PORT
         host: ${{ secrets.YANDEX_CLOUD_HOST }}
         username: ${{ secrets.YANDEX_CLOUD_USER }}
         key: ${{ secrets.SSH_KEY }}
-        envs: SECRET_KEY,DB_ENGINE,DB_NAME,POSTGRES_USER,POSTGRES_PASSWORD,DB_HOST,DB_PORT
         script: |
           sudo rm docker-compose.yaml
           sudo rm -r nginx
