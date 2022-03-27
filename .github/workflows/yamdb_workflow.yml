@@ -84,6 +84,7 @@ jobs:
         username: ${{ secrets.YANDEX_CLOUD_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
+          export SECRET_KEY=$SECRET_KEY
           sudo rm docker-compose.yaml
           sudo rm -r nginx
           sudo wget -O docker-compose.yaml https://github.com/Muxa2793/yamdb_final/blob/master/infra/docker-compose.yaml?raw=true
