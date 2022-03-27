@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-dotenv_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) + '/infra/.env'
-load_dotenv(dotenv_path)
+# dotenv_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) + '/infra/.env'
+# load_dotenv(dotenv_path)
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
