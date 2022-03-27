@@ -7,6 +7,7 @@ jobs:
   tests:
     name: pep8 check and tests
     runs-on: ubuntu-latest
+    enviroment: yamdb_env
     steps:
       - uses: actions/checkout@v3
       # STEP 1
