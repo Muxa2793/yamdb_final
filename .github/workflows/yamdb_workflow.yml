@@ -77,9 +77,10 @@ jobs:
         script: |
           rm docker-compose.yaml
           rm -r nginx
-          wget https://github.com/Muxa2793/yamdb_final/blob/master/infra/docker-compose.yaml?raw=true
+          wget -O docker-compose.yaml https://github.com/Muxa2793/yamdb_final/blob/master/infra/docker-compose.yaml?raw=true
           mkdir nginx && cd nginx
-          wget https://github.com/Muxa2793/yamdb_final/blob/master/infra/nginx/default.conf?raw=true && cd ..
+          wget -O default.conf https://github.com/Muxa2793/yamdb_final/blob/master/infra/nginx/default.conf?raw=true && cd ..
+          curl https://raw.githubusercontent.com/Muxa2793/yamdb_final/blob/master/infra/nginx/default.conf
           sudo docker-compose stop
           sudo docker-compose rm web
           sudo docker-compose up -d
