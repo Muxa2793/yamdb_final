@@ -8,14 +8,6 @@ jobs:
     name: pep8 check and tests
     runs-on: ubuntu-latest
     enviroment: yamdb_env
-    env:
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      DB_ENGINE: ${{ secrets.DB_ENGINE }}
-      DB_NAME: ${{ secrets.DB_NAME }}
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      DB_HOST: ${{ secrets.DB_HOST }}
-      DB_PORT: ${{ secrets.DB_PORT }}
     steps:
       - uses: actions/checkout@v3
       # STEP 1
@@ -34,8 +26,6 @@ jobs:
         run: |
           python -m flake8 
           pytest
-        env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
         
   # JOB 2
   build_and_push_to_docker_hub:
