@@ -12,7 +12,10 @@ API для создания рецензий на различные произ�
 
 ##### Запуск приложения
 
-- Создайте в корне папки `infra` файл .env следующего наполнения:
+- подготовьте ваш сервер:
+  - установите [Docker](https://docs.docker.com/engine/install/) и [Docker-compose](https://docs.docker.com/compose/install/)
+- Сделайте fork данного репозитория к себе;
+- Создайте в Repository secrets на Github следующие секреты:
 
 ```bash
 SECRET_KEY=your_secret_key_for_django
@@ -22,22 +25,17 @@ POSTGRES_USER=postgres_user
 POSTGRES_PASSWORD=postgres_password
 DB_HOST=db
 DB_PORT=5432
+DOCKER_USERNAME=your_docker_username
+DOCKER_PASSWORD=your_docker_password
+YANDEX_CLOUD_HOST=your_host_ip (not necessary yandex)
+YANDEX_CLOUD_USER=your_host_username (not necessary yandex)
+SSH_KEY=your_private_ssh_key
+TELEGRAM_TO=your_telegram_id
+TELEGRAM_TOKEN=your_bot_token
 ```
 
-- Выполните следующую команду из папки `infra`:
-
-```bash
-docker-compose up -d --build
-```
-
-- После запуска контейнеров выполните следующие команды:
-
-```bash
-docker-compose exec web python manage.py migrate
-docker-compose exec web python manage.py collectstatic --no-input
-```
-
-- Создайте суперпользователя:
+- запустите workflow;
+- Создайте суперпользователя на сервере:
 
 ```bash
 docker-compose exec web python manage.py createsuperuser
@@ -46,17 +44,19 @@ docker-compose exec web python manage.py createsuperuser
 ##### Описание API приложения можно посмотреть в документации проекта после запуска сервера
 
 ```bash
-GET http://127.0.0.1:8000/redoc/
+GET HOST_IP/redoc/
 ```
 
 #### Технологии
 
     Python
     django rest_framework
+    docker
+    docker-compose
 
 #### Авторы
 
-Команда [Яндекс.Практикума](http://example.com/ "Яндекс.Практикум") и [Михаил Спиридонов](https://t.me/MikhailSpiridonov "Мой Telegram для связи").
+Команда [Яндекс.Практикума](https://practicum.yandex.ru/profile/python-developer-plus/ "Яндекс.Практикум") и [Михаил Спиридонов](https://t.me/MikhailSpiridonov "Мой Telegram для связи").
 
 #### License
 
