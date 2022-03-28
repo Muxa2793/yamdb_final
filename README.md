@@ -61,3 +61,8 @@ GET HOST_IP/redoc/
 #### License
 
 MIT
+
+#### Ссылки
+1) http://51.250.15.246/api/v1/
+2) http://51.250.15.246/admin/
+2) http://51.250.15.246/redoc/
