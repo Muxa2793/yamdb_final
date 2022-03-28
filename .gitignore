@@ -146,8 +146,6 @@ dmypy.json
 .mypy_cache
 
 # папки со статикой и медиа
-static/data
-static/emails
-# posts/static/
-# media/
+*/static/data/
+*/static/emails/
 
